@@ -364,3 +364,42 @@ body {
         font-size: 20px;
     }
 }
+
+/* Language Section Styling */
+.language-section {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Hide Google Translate branding */
+.goog-te-gadget {
+    font-family: inherit !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid #667eea;
+    font-size: 16px;
+    background: white;
+    color: #4a5568;
+}
+
+/* Style the language dropdown */
+.goog-te-combo option {
+    padding: 8px;
+}
+
+/* Remove Google Translate banner */
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
