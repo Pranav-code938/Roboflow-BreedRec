@@ -40,50 +40,61 @@ body {
     font-size: 16px;
 }
 
-/* Clean Language Selector */
+/* Google Translate Section */
 .language-section {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.language-selector {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.language-label {
-    color: white;
-    font-weight: 600;
-    font-size: 16px;
-    white-space: nowrap;
-}
-
-#language-select {
-    flex: 1;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
     background: white;
-    color: #4a5568;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 12px center;
-    background-repeat: no-repeat;
-    background-size: 16px;
-    padding-right: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-#language-select:focus {
+.language-section h3 {
+    color: #4a5568;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* Clean up Google Translate styling */
+#google_translate_element {
+    margin: 0 auto;
+}
+
+.goog-te-gadget {
+    font-family: inherit !important;
+    font-size: 0;
+}
+
+.goog-te-gadget .goog-te-combo {
+    margin: 4px 0;
+    padding: 12px 15px;
+    border: 2px solid #667eea;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #4a5568;
+    background: white;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.goog-te-gadget .goog-te-combo:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    border-color: #764ba2;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Hide Google Translate banner and branding */
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
+.skiptranslate {
+    display: none !important;
 }
 
 /* Instructions Card */
@@ -383,20 +394,6 @@ body {
         font-size: 24px;
     }
     
-    .language-selector {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-    }
-    
-    .language-label {
-        text-align: center;
-    }
-    
-    #language-select {
-        width: 100%;
-    }
-    
     .instructions-card, .upload-section, .results-section {
         padding: 20px;
     }
@@ -422,5 +419,10 @@ body {
     
     .confidence {
         font-size: 20px;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        min-width: 150px;
+        font-size: 14px;
     }
 }
