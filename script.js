@@ -1,17 +1,96 @@
 // ============================================
 // 🔧 CONFIGURATION - PASTE YOUR API DETAILS HERE
 // ============================================
-const API_URL = "https://serverless.roboflow.com/breedrecognition-1albo/1"; // Example: "https://serverless.roboflow.com/your-project/1"
-const API_KEY = "bxfNUAG0fFZGcEggBdve"; // Example: "your-api-key-from-roboflow"
+const API_URL = "https://serverless.roboflow.com/breedrecognition-1albo/1"; 
+const API_KEY = "bxfNUAG0fFZGcEggBdve"; 
 // ============================================
 
 // Application state
 let currentImage = null;
 
+// Translation dictionary
+const translations = {
+    "instructions-title": {
+        "hi": "📋 अच्छी तस्वीर कैसे लें",
+        "bn": "📋 কিভাবে একটি ভাল ছবি তুলতে হয়",
+        "ta": "📋 நல்ல புகைப்படம் எப்படி எடுக்கலாம்",
+        "te": "📋 మంచి ఫోటో ఎలా తీయాలి",
+        "mr": "📋 चांगला फोटो कसा काढावा",
+        "gu": "📋 સારો ફોટો કેવી રીતે લેવો",
+        "kn": "📋 ಉತ್ತಮ ಫೋಟೋ ಹೇಗೆ ತೆಗೆಯುವುದು",
+        "ml": "📋 നല്ല ഫോട്ടോ എങ്ങനെ എടുക്കാം",
+        "pa": "📋 ਚੰਗੀ ਫੋਟੋ ਕਿਵੇਂ ਲਵੋ",
+        "ur": "📋 اچھی تصویر کیسے لیں"
+    },
+    "instruction-1": {
+        "hi": "3-5 फीट दूरी से फोटो लें",
+        "bn": "৩-৫ ফুট দূরত্ব থেকে ফটো তুলুন",
+        "ta": "3-5 அடி தூரத்திலிருந்து புகைப்படம் எடுக்கவும்",
+        "te": "3-5 అడుగుల దూరం నుండి ఫోటో తీయండి",
+        "mr": "3-5 फूट अंतरावरून फोटो काढा",
+        "gu": "3-5 ફૂટ દૂરથી ફોટો લો",
+        "kn": "3-5 ಅಡಿ ದೂರದಿಂದ ಫೋಟೋ ತೆಗೆಯಿರಿ",
+        "ml": "3-5 അടി അകലത്തിൽ നിന്ന് ഫോട്ടോ എടുക്കുക",
+        "pa": "3-5 ਫੁੱਟ ਦੂਰੀ ਤੋਂ ਫੋਟੋ ਲਵੋ",
+        "ur": "3-5 فٹ کی دوری سے تصویر لیں"
+    },
+    "instruction-2": {
+        "hi": "अच्छी रोशनी का इस्तेमाल करें",
+        "bn": "ভাল আলো ব্যবহার করুন",
+        "ta": "நல்ல வெளிச்சத்தைப் பயன்படுத்தவும்",
+        "te": "మంచి వెలుతురును ఉపయోగించండి",
+        "mr": "चांगला प्रकाश वापरा",
+        "gu": "સારી પ્રકાશનો ઉપયોગ કરો",
+        "kn": "ಉತ್ತಮ ಬೆಳಕನ್ನು ಬಳಸಿ",
+        "ml": "നല്ല വെളിച്ചം ഉപയോഗിക്കുക",
+        "pa": "ਚੰਗੀ ਰੌਸ਼ਨੀ ਵਰਤੋ",
+        "ur": "اچھی روشنی استعمال کریں"
+    },
+    "camera-btn": {
+        "hi": "📷 फोटो खींचें",
+        "bn": "📷 ছবি তুলুন",
+        "ta": "📷 புகைப்படம் எடுங்கள்",
+        "te": "📷 ఫోటో తీయండి",
+        "mr": "📷 फोटो काढा",
+        "gu": "📷 ફોટો લો",
+        "kn": "📷 ಫೋಟೋ ತೆಗೆಯಿರಿ",
+        "ml": "📷 ഫോട്ടോ എടുക്കുക",
+        "pa": "📷 ਫੋਟੋ ਲਵੋ",
+        "ur": "📷 تصویر لیں"
+    }
+};
+
 // Initialize the app
 document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
+    loadSavedLanguage();
 });
+
+// Change language function
+function changeLanguage() {
+    const select = document.getElementById('language-select');
+    const selectedLang = select.value;
+    
+    // Translate elements
+    for (const elementId in translations) {
+        const element = document.getElementById(elementId);
+        if (element && translations[elementId][selectedLang]) {
+            element.textContent = translations[elementId][selectedLang];
+        }
+    }
+    
+    // Save language preference
+    localStorage.setItem('preferred_language', selectedLang);
+}
+
+// Load saved language
+function loadSavedLanguage() {
+    const savedLang = localStorage.getItem('preferred_language');
+    if (savedLang && savedLang !== 'en') {
+        document.getElementById('language-select').value = savedLang;
+        changeLanguage();
+    }
+}
 
 // Setup all event listeners
 function setupEventListeners() {
@@ -216,7 +295,7 @@ function resetToUpload() {
     
     // Hide all sections except upload
     document.getElementById('preview-area').style.display = 'none';
-    hideLoading();
+    showLoading(false);
     hideError();
     hideResults();
     
