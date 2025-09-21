@@ -59,6 +59,7 @@ body {
 /* Clean up Google Translate styling */
 #google_translate_element {
     margin: 0 auto;
+    min-height: 50px;
 }
 
 .goog-te-gadget {
@@ -84,6 +85,24 @@ body {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
+/* Refresh button styling */
+.refresh-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    color: #4a5568;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+}
+
 /* Hide Google Translate banner and branding */
 .goog-te-banner-frame {
     display: none !important;
@@ -95,6 +114,15 @@ body {
 
 .skiptranslate {
     display: none !important;
+}
+
+/* Fix Google Translate popup */
+.goog-te-menu-value {
+    color: #4a5568 !important;
+}
+
+.goog-te-menu-value span {
+    color: #4a5568 !important;
 }
 
 /* Instructions Card */
