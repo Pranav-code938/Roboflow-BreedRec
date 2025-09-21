@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cattle & Buffalo Breed Scanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🐄 Cattle & Buffalo Breed Scanner</h1>
+            <p>Identify livestock breeds instantly with AI</p>
+        </header>
+
+        <!-- Instructions Card -->
+        <div class="instructions-card">
+            <h2>📋 How to Take a Good Photo</h2>
+            <div class="instructions">
+                <div class="instruction-item">
+                    <span class="icon">📷</span>
+                    <span>Take photo from 3-5 feet away</span>
+                </div>
+                <div class="instruction-item">
+                    <span class="icon">☀️</span>
+                    <span>Use good lighting (avoid shadows)</span>
+                </div>
+                <div class="instruction-item">
+                    <span class="icon">👁️</span>
+                    <span>Show the animal's full body or head</span>
+                </div>
+                <div class="instruction-item">
+                    <span class="icon">📱</span>
+                    <span>Hold phone steady and focus clearly</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <h2>📸 Add Your Photo</h2>
+            
+            <!-- Hidden file inputs -->
+            <input type="file" id="camera-input" accept="image/*" capture="environment" style="display: none;">
+            <input type="file" id="gallery-input" accept="image/*" style="display: none;">
+            
+            <div class="button-group">
+                <button class="btn-primary" id="camera-btn">
+                    📷 Take Photo
+                </button>
+                <button class="btn-secondary" id="gallery-btn">
+                    🖼️ Upload from Gallery
+                </button>
+            </div>
+            
+            <!-- Image Preview -->
+            <div class="preview-area" id="preview-area" style="display: none;">
+                <img id="preview-image" alt="Selected image">
+                <div class="preview-actions">
+                    <button class="btn-scan" id="scan-btn">🔍 Identify Breed</button>
+                    <button class="btn-small" id="retake-btn">🔄 Choose Different Photo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>🤖 AI is analyzing the image...</p>
+            <small>This may take a few seconds</small>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="results-section" style="display: none;">
+            <h2>🎯 Breed Identification Results</h2>
+            <div class="predictions" id="predictions">
+                <!-- Results will be inserted here -->
+            </div>
+            <div class="result-actions">
+                <button class="btn-secondary" id="new-scan-btn">🔄 Scan Another Animal</button>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="error-message" style="display: none;">
+            <p>❌ <span id="error-text"></span></p>
+            <button class="btn-small" id="retry-btn">🔄 Try Again</button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🌾 Powered by AI for Field Level Workers</p>
+            <small>For technical support, contact your supervisor</small>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
