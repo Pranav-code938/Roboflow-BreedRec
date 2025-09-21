@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cattle & Buffalo Breed Scanner</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'hi,bn,te,mr,ta,ur,gu,kn,ml,or,pa,as,ne,sd,ks,mai,sa,bho,kok,gom,mni,sit',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
     <div class="container">
@@ -14,52 +27,38 @@
             <p>Identify livestock breeds instantly with AI</p>
         </header>
 
-        <!-- CLEAN Language Selector -->
+        <!-- Google Translate Widget -->
         <div class="language-section">
-            <div class="language-selector">
-                <div class="language-label">🌐 Language / भाषा</div>
-                <select id="language-select" onchange="changeLanguage()">
-                    <option value="en">English</option>
-                    <option value="hi">हिंदी (Hindi)</option>
-                    <option value="bn">বাংলা (Bengali)</option>
-                    <option value="ta">தமிழ் (Tamil)</option>
-                    <option value="te">తెలుగు (Telugu)</option>
-                    <option value="mr">मराठी (Marathi)</option>
-                    <option value="gu">ગુજરાતી (Gujarati)</option>
-                    <option value="kn">ಕನ್ನಡ (Kannada)</option>
-                    <option value="ml">മലയാളം (Malayalam)</option>
-                    <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
-                    <option value="ur">اردو (Urdu)</option>
-                </select>
-            </div>
+            <h3>🌐 Choose Language / भाषा चुनें</h3>
+            <div id="google_translate_element"></div>
         </div>
 
         <!-- Instructions Card -->
         <div class="instructions-card">
-            <h2 id="instructions-title">📋 How to Take a Good Photo</h2>
+            <h2>📋 How to Take a Good Photo</h2>
             <div class="instructions">
                 <div class="instruction-item">
                     <span class="icon">📷</span>
-                    <span id="instruction-1">Take photo from 3-5 feet away</span>
+                    <span>Take photo from 3-5 feet away</span>
                 </div>
                 <div class="instruction-item">
                     <span class="icon">☀️</span>
-                    <span id="instruction-2">Use good lighting (avoid shadows)</span>
+                    <span>Use good lighting (avoid shadows)</span>
                 </div>
                 <div class="instruction-item">
                     <span class="icon">👁️</span>
-                    <span id="instruction-3">Show the animal's full body or head</span>
+                    <span>Show the animal's full body or head</span>
                 </div>
                 <div class="instruction-item">
                     <span class="icon">📱</span>
-                    <span id="instruction-4">Hold phone steady and focus clearly</span>
+                    <span>Hold phone steady and focus clearly</span>
                 </div>
             </div>
         </div>
 
         <!-- Upload Section -->
         <div class="upload-section">
-            <h2 id="upload-title">📸 Add Your Photo</h2>
+            <h2>📸 Add Your Photo</h2>
             
             <!-- Hidden file inputs -->
             <input type="file" id="camera-input" accept="image/*" capture="environment" style="display: none;">
@@ -87,13 +86,13 @@
         <!-- Loading -->
         <div class="loading" id="loading" style="display: none;">
             <div class="spinner"></div>
-            <p id="loading-text">🤖 AI is analyzing the image...</p>
-            <small id="loading-subtext">This may take a few seconds</small>
+            <p>🤖 AI is analyzing the image...</p>
+            <small>This may take a few seconds</small>
         </div>
 
         <!-- Results Section -->
         <div class="results-section" id="results-section" style="display: none;">
-            <h2 id="results-title">🎯 Breed Identification Results</h2>
+            <h2>🎯 Breed Identification Results</h2>
             <div class="predictions" id="predictions">
                 <!-- Results will be inserted here -->
             </div>
@@ -110,8 +109,8 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p id="footer-text">🌾 Powered by AI for Field Level Workers</p>
-            <small id="footer-subtext">For technical support, contact your supervisor</small>
+            <p>🌾 Powered by AI for Field Level Workers</p>
+            <small>For technical support, contact your supervisor</small>
         </footer>
     </div>
 
