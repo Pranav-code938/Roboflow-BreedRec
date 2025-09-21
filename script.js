@@ -11,7 +11,24 @@ let currentImage = null;
 // Initialize the app
 document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
+    
+    // Add refresh button functionality
+    document.getElementById('refresh-translate').addEventListener('click', refreshTranslate);
 });
+
+// Refresh Google Translate
+function refreshTranslate() {
+    const translateElement = document.getElementById('google_translate_element');
+    translateElement.innerHTML = '';
+    
+    // Reload Google Translate script
+    const script = document.createElement('script');
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+    
+    // Hide refresh button
+    document.getElementById('refresh-translate').style.display = 'none';
+}
 
 // Setup all event listeners
 function setupEventListeners() {
