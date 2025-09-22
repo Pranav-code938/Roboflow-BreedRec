@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     
     // Add refresh button functionality
-    document.getElementById('refresh-translate').addEventListener('click', refreshTranslate);
+    const refreshBtn = document.getElementById('refresh-translate');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', refreshTranslate);
+    }
 });
 
 // Refresh Google Translate
