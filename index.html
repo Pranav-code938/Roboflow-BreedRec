@@ -16,9 +16,8 @@
 
         <!-- Google Translate Widget -->
         <div class="language-section">
-            <h3>🌐 Choose Language / [translate:भाषा चुनें]</h3>
+            <h3>🌐 Choose Language / भाषा चुनें</h3>
             <div id="google_translate_element"></div>
-            <!-- Backup manual refresh button -->
             <button id="refresh-translate" class="refresh-btn" style="display: none;">
                 🔄 Refresh Language Options
             </button>
@@ -117,22 +116,17 @@
         }, 'google_translate_element');
     }
 
-    // Backup initialization function
     function initializeTranslate() {
-        // Check if Google Translate loaded
         if (typeof google !== 'undefined' && google.translate) {
             googleTranslateElementInit();
         } else {
-            // Retry after delay
             setTimeout(initializeTranslate, 1000);
         }
     }
 
-    // Multiple initialization attempts
     document.addEventListener('DOMContentLoaded', function() {
         setTimeout(initializeTranslate, 500);
         
-        // Show refresh button if translate doesn't load
         setTimeout(function() {
             const translateElement = document.getElementById('google_translate_element');
             const refreshBtn = document.getElementById('refresh-translate');
@@ -143,17 +137,14 @@
         }, 3000);
     });
 
-    // Refresh translate function
     function refreshTranslate() {
         const translateElement = document.getElementById('google_translate_element');
         translateElement.innerHTML = '';
         
-        // Reload Google Translate script
         const script = document.createElement('script');
         script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
         document.head.appendChild(script);
         
-        // Hide refresh button
         document.getElementById('refresh-translate').style.display = 'none';
     }
     </script>
